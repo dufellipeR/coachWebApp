@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import './assets/valorant.ttf';
 import App from './App';
 
 ReactDOM.render(
