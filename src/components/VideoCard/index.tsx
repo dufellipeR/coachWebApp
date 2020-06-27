@@ -16,7 +16,7 @@ const VideoCard: React.FC<IframeProps> = ({ source, ...rest }) => {
         frameBorder="0"
         allowFullScreen
         scrolling="no"
-        height="350px"
+        height="450px"
         width="400px"
       />
     </Container>

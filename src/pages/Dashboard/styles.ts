@@ -1,13 +1,16 @@
 import styled, { css } from 'styled-components';
 import { shade } from 'polished';
-import codBack from '../../assets/codbacksized.png';
+import codBack from '../../assets/codbackresized2.jpg';
 import valorBack from '../../assets/valorantback.jpg';
 import backMain from '../../assets/backgroundmain.png';
+import highlightsback from '../../assets/reyna.png';
+import mw from '../../assets/valorantprice.jpg';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background: #050505;
+  background: #000;
+  overflow-y: hidden;
 `;
 
 export const Header = styled.header`
@@ -15,28 +18,21 @@ export const Header = styled.header`
   flex-direction: row-reverse;
   justify-content: space-between;
   min-height: 400px;
-  background: #050505;
+  background: #000;
   font-size: 18px;
   font-family: valorant;
+  overflow: hidden;
 
-  div {
-    padding-left: 15%;
-    padding-top: 12%;
-
-    ul {
-      list-style: none;
-      li {
-        font-size: 16px;
-        margin: 3px;
-      }
-      li:first-child {
-        font-size: 30px;
-      }
-    }
+  video {
+    min-width: 100%;
   }
 
   nav {
-    padding: 3%;
+    z-index: 2;
+    min-width: 100%;
+    padding: 1%;
+    position: fixed;
+    background: rgba(0.5, 0.5, 0.5, 0.1);
     ul {
       justify-content: space-evenly;
       display: flex;
@@ -45,10 +41,13 @@ export const Header = styled.header`
       list-style: none;
 
       li {
-        cursor: pointer;
-        margin: 7px;
-        transition: color 0.3s;
-
+        a {
+          text-decoration: none;
+          color: #fff;
+          cursor: pointer;
+          margin: 7px;
+          transition: color 0.3s;
+        }
         hr {
           margin-top: 10%;
           visibility: hidden;
@@ -56,7 +55,9 @@ export const Header = styled.header`
         }
 
         &:hover {
-          color: #f43f4e;
+          a {
+            color: #f43f4e;
+          }
 
           hr {
             visibility: visible;
@@ -72,14 +73,50 @@ export const Intro = styled.section`
   justify-content: center;
 
   #imgDiv {
+    display: flex;
+    align-items: center;
     position: absolute;
-    min-width: 550px;
+    min-width: 80%;
     min-height: 500px;
-    background: url(${backMain});
-    top: 10%;
-    img {
+    background: url(${backMain}) no-repeat center;
+    top: 68%;
+    z-index: 1;
+    transition: 0.3s;
+
+    p {
+      visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      margin-left: 37%;
+      font-family: valorant;
+      transition: 0.3s;
+      font-size: 16px;
+      &:first-child() {
+        font-size: 30px;
+      }
+    }
+
+    a {
       position: absolute;
-      left: 20%;
+      left: 33%;
+      transition: 0.4s;
+
+      img {
+        transition: 0.4s;
+      }
+    }
+    &:hover {
+      p {
+        visibility: visible;
+
+        font-size: 19px;
+        &:first-child() {
+          font-size: 36px;
+        }
+      }
+      img {
+        margin-left: 210px;
+      }
     }
   }
 
@@ -97,13 +134,19 @@ export const Intro = styled.section`
 `;
 
 export const Highlights = styled.section`
-  padding: 2%;
+  background: url(${highlightsback}) no-repeat fixed center;
+  padding: 1%;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   min-width: 680px;
   min-height: 1080px;
   align-items: center;
   h1 {
+    top: 10%;
+    min-height: 5;
+    background: #000;
+    padding: 2%;
     font-size: 72px;
     font-family: valorant;
   }
@@ -123,6 +166,7 @@ export const Prices = styled.section`
   justify-content: center;
   align-items: center;
   background: #f43f4e;
+  /* background: url(${mw}) no-repeat; */
   min-width: 680px;
   min-height: 720px;
   color: #101823;
@@ -138,6 +182,33 @@ export const Prices = styled.section`
     justify-content: center;
 
     min-width: 100%;
+
+    .basicPrice {
+      transition: 0.2s;
+      &:hover {
+        box-shadow: 0 0 10px 0 rgba(120, 135, 182, 0.4);
+
+        padding-bottom: 58px;
+        padding-top: 44px;
+        margin-top: -18px;
+        margin-bottom: -18px;
+        z-index: 1;
+        border-top: 7px solid #ff843b;
+      }
+    }
+
+    .maxPrice {
+      transition: 0.2s;
+      &:hover {
+        box-shadow: 0 0 10px 0 rgba(120, 135, 182, 0.4);
+        border-top: 7px solid rebeccapurple;
+        padding-bottom: 58px;
+        padding-top: 44px;
+        margin-top: -18px;
+        margin-bottom: -18px;
+        z-index: 1;
+      }
+    }
 
     .cardPrice {
       -webkit-box-flex: 0;
@@ -164,6 +235,16 @@ export const Prices = styled.section`
       -webkit-box-flex: 1;
       flex-grow: 1;
       color: #4a535a;
+
+      /* &:hover {
+        box-shadow: 0 0 10px 0 rgba(120, 135, 182, 0.4);
+        border-top: 7px solid #008fff;
+        padding-bottom: 58px;
+        padding-top: 44px;
+        margin-top: -18px;
+        margin-bottom: -18px;
+        z-index: 1;
+      } */
 
       img {
         margin-right: 3%;
@@ -220,7 +301,7 @@ export const Prices = styled.section`
           .planos-pagamento__numero-parcelas {
             font-size: 15px;
             font-weight: normal;
-            line-height: 1;
+            line-height: 2;
             letter-spacing: -0.3px;
             margin-bottom: 3px;
           }
@@ -300,3 +381,5 @@ export const Prices = styled.section`
     }
   }
 `;
+
+export const Footer = styled.footer``;

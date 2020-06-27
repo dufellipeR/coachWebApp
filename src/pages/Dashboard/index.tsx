@@ -2,13 +2,15 @@ import React, { useState, useEffect, FormEvent } from 'react';
 import { FiChevronRight, FiChevronLeft, FiZap } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
-import guProfile from '../../assets/gu-profile1-transp.png';
+import guProfile from '../../assets/guProfile-removebg-preview.png';
 import VideoCard from '../../components/VideoCard';
 import checked from '../../assets/checked16.png';
 import check from '../../assets/check16.png';
 import layerbasic from '../../assets/layerbasic.png';
 import layerpremium from '../../assets/layerpremium.png';
 import layermax from '../../assets/layermax.png';
+import clip from '../../assets/Compilado.mp4';
+import clip2 from '../../assets/clip2.mp4';
 
 import {
   Container,
@@ -17,6 +19,7 @@ import {
   Highlights,
   Prices,
   VideoCardList,
+  Footer,
 } from './styles';
 
 const Dashboard: React.FC = () => {
@@ -35,40 +38,45 @@ const Dashboard: React.FC = () => {
         <nav>
           <ul>
             <li>
-              Home
+              <a href="#home">Home</a>
               <hr />
             </li>
             <li>
-              Highlights
+              <a href="#highlights">Highlights</a>
               <hr />
             </li>
             <li>
-              Valores
+              <a href="#valores">Valores</a>
               <hr />
             </li>
           </ul>
         </nav>
-        <div id="Info">
-          <ul>
-            <li>Gustavo Cordeiro</li>
-            <li>Desempregado mas experiente</li>
-            <li>Só balinha</li>
-          </ul>
-        </div>
+        <video autoPlay muted loop>
+          <source src={clip} type="video/mp4" />
+          <source src={clip2} type="video/mp4" />
+        </video>
       </Header>
-      <Intro>
+      <Intro id="home">
         <div id="imgCod" />
         <div id="imgDiv">
-          <img
-            src={guProfile}
-            width="350px"
-            height="380px"
-            alt="Gustavo Cordeiro"
-          />
+          <p>
+            <h3>Gustavo Cordeiro</h3>
+            <span>Call of Duty</span>
+            <span>Valorant</span>
+            <span>Platina</span>
+          </p>
+          <a target="blank" href="https://twitch.com/Gustaveers">
+            <img
+              src={guProfile}
+              width="350px"
+              height="380px"
+              alt="Gustavo Cordeiro"
+            />
+          </a>
         </div>
         <div id="imgValor" />
       </Intro>
-      <Highlights>
+      <Highlights id="highlights">
         <h1>V-HIGHLIGHTS</h1>
         <VideoCardList>
           {VideoList.map((videoUrl) => (
@@ -76,10 +84,10 @@ const Dashboard: React.FC = () => {
           ))}
         </VideoCardList>
       </Highlights>
-      <Prices>
+      <Prices id="valores">
         <h1>VALORES </h1>
         <div id="listValores">
-          <div className="cardPrice">
+          <div className="cardPrice basicPrice">
             <img src={layerbasic} alt="" />
             <h3 className="title titleBasic">BASIC PACKAGE</h3>
             <div className="planos-pagamento__precos">
@@ -192,7 +200,7 @@ const Dashboard: React.FC = () => {
               Matricule-se
             </a>
           </div>
-          <div className="cardPrice">
+          <div className="cardPrice maxPrice">
             <img src={layermax} alt="" />
             <h3 className="title titleMax">MAX</h3>
             <div className="planos-pagamento__precos">
@@ -251,6 +259,7 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </Prices>
+      <Footer />
     </Container>
   );
 };
